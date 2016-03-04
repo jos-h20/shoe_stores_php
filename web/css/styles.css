@@ -4,7 +4,7 @@ color: lightgray;
 }
 
 .jumbotron {
-    color: darkorange;
+    color: turquoise;
     width: 100%;
     background-image: url("../img/header2.jpg");
     background-size: cover;
@@ -36,4 +36,5 @@ color: lightgray;
 }
 .navbar {
     background-color: darkorange;
+    color: black;
 }

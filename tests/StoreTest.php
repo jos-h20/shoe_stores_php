@@ -15,6 +15,7 @@
         protected function tearDown()
         {
             Store::deleteAll();
+            Brand::deleteAll();
         }
         function testGetStoreName()
         {
@@ -98,44 +99,44 @@
          //Assert
          $this->assertEquals($test_store, $result);
        }
-    //    function testGetBrands()
-    //    {
-    //        // Arrange
-    //        $brand_name = "Saloman";
-    //        $id = 1;
-    //        $test_brand = new Brand($brand_name, $id);
-    //        $test_brand->save();
-    //        $brand_name2 = "Crocs";
-    //        $id2 = 2;
-    //        $test_brand2 = new Brand($brand_name2, $id2);
-    //        $test_brand2->save();
-       //
-    //        $store_name = "Super Shoes";
-    //        $id3 = 3;
-    //        $test_store = new Store($store_name, $id3);
-    //        $test_store->save();
-    //        // Act
-    //        $test_store->addBrand($test_brand);
-    //        $test_store->addBrand($test_brand2);
-    //        // Assert
-    //        $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
-    //    }
-    //    function testAddBrand()
-    //    {
-    //        // Arrange
-    //        $brand_name = "Saloman";
-    //        $id = 1;
-    //        $test_brand = new Brand($brand_name, $id);
-    //        $test_brand->save();
-    //        $store_name = "Super Shoes";
-    //        $id3 = 3;
-    //        $test_store = new Store($store_name, $id3);
-    //        $test_store->save();
-    //        // Act
-    //        $test_store->addBrand($test_brand);
-    //        // Assert
-    //        $this->assertEquals($test_store->getBrands(), [$test_brand]);
-    //    }
+       function testGetBrands()
+       {
+           // Arrange
+           $brand_name = "Saloman";
+           $id = 1;
+           $test_brand = new Brand($brand_name, $id);
+           $test_brand->save();
+           $brand_name2 = "Crocs";
+           $id2 = 2;
+           $test_brand2 = new Brand($brand_name2, $id2);
+           $test_brand2->save();
+
+           $store_name = "Super Shoes";
+           $id3 = 3;
+           $test_store = new Store($store_name, $id3);
+           $test_store->save();
+           // Act
+           $test_store->addBrand($test_brand);
+           $test_store->addBrand($test_brand2);
+           // Assert
+           $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
+       }
+       function testAddBrand()
+       {
+           // Arrange
+           $brand_name = "Saloman";
+           $id = 1;
+           $test_brand = new Brand($brand_name, $id);
+           $test_brand->save();
+           $store_name = "Super Shoes";
+           $id3 = 3;
+           $test_store = new Store($store_name, $id3);
+           $test_store->save();
+           // Act
+           $test_store->addBrand($test_brand);
+           // Assert
+           $this->assertEquals($test_store->getBrands(), [$test_brand]);
+       }
         function testDelete() {
             //Arrange;
             $store_name = "Super Shoes";

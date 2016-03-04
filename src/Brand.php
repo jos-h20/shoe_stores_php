@@ -51,18 +51,18 @@
         {
           $GLOBALS['DB']->exec("DELETE FROM brands;");
         }
-    //     static function find($search_id)
-    //     {
-    //         $found_brand = null;
-    //         $brands = Brand::getAll();
-    //         foreach($brands as $brand) {
-    //             $brand_id = $brand->getId();
-    //             if ($brand_id == $search_id) {
-    //               $found_brand = $brand;
-    //             }
-    //         }
-    //         return $found_brand;
-    //     }
+        static function find($search_id)
+        {
+            $found_brand = null;
+            $brands = Brand::getAll();
+            foreach($brands as $brand) {
+                $brand_id = $brand->getId();
+                if ($brand_id == $search_id) {
+                  $found_brand = $brand;
+                }
+            }
+            return $found_brand;
+        }
     //     function addStore($store)
     //     {
     //         $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$store->getId()});");

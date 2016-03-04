@@ -7,6 +7,7 @@ color: lightgray;
     color: darkorange;
     width: 100%;
     background-image: url("../img/header2.jpg");
+    background-size: cover;
     padding-left: 20px;
     padding-right: 20px;
     height: 400px;

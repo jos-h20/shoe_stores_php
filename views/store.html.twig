@@ -20,6 +20,8 @@
                             <li>{{ brand.getBrandName }}</li>
                         {% endfor %}
                     </ul>
+                    {% else %}
+                    <p>There are no brands listed for this store.</p>
                 {% endif %}
             </div>
             <div class="col-sm-6 form">

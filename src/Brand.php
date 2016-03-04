@@ -25,16 +25,16 @@
               $GLOBALS['DB']->exec("INSERT INTO brands (brand_name) VALUES ('{$this->getBrandName()}');");
               $this->id = $GLOBALS['DB']->lastInsertId();
         }
-        function update($new_brand_name)
-        {
-            $GLOBALS['DB']->exec("UPDATE brands SET brand_name = '{$new_brand_name}' WHERE id = {$this->getId()};");
-            $this->setBrandName($new_brand_name);
-        }
-        function delete()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
-    $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
-        }
+    //     function update($new_brand_name)
+    //     {
+    //         $GLOBALS['DB']->exec("UPDATE brands SET brand_name = '{$new_brand_name}' WHERE id = {$this->getId()};");
+    //         $this->setBrandName($new_brand_name);
+    //     }
+    //     function delete()
+    //     {
+    //         $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
+    // $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
+    //     }
         static function getAll()
         {
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");

@@ -11,10 +11,10 @@
     $DB = new PDO($server, $username, $password);
     class BrandTest extends PHPUnit_Framework_TestCase
     {
-        // protected function tearDown()
-        // {
-        //     Brand::deleteAll();
-        // }
+        protected function tearDown()
+        {
+            Brand::deleteAll();
+        }
         function testGetBrandName()
         {
             // Arrange
@@ -37,50 +37,50 @@
             // Assert
             $this->assertEquals($id, $result);
         }
-      //   function testSave()
-      //   {
-      //       //Arrange
-      //       $brand_name = "Saloman";
-      //       $test_brand = new Brand($brand_name);
-      //       $test_brand->save();
-      //       //Act
-      //       $result = Brand::getAll();
-      //       //Assert
-      //       $this->assertEquals($test_brand, $result[0]);
-      //   }
-      //   function testGetAll()
-      //   {
-      //       //Arrange
-      //       $brand_name = "Saloman";
-      //       $id = 1;
-      //       $test_brand = new Brand($brand_name, $id);
-      //       $test_brand->save();
-      //       $brand_name2 = "Crocs";
-      //       $id2 = 2;
-      //       $test_brand2 = new Brand($brand_name2, $id2);
-      //       $test_brand2->save();
-      //       //Act
-      //       $result = Brand::getAll();
-      //       //Assert
-      //       $this->assertEquals([$test_brand, $test_brand2], $result);
-      //   }
-      //   function testDeleteAll()
-      //   {
-      //       //Arrange
-      //       $brand_name = "Saloman";
-      //       $id = 1;
-      //       $test_brand = new Brand($brand_name, $b $id);
-      //       $test_brand->save();
-      //       $brand_name2 = "Crocs";
-      //       $id2 = 2;
-      //       $test_brand2 = new Brand($brand_name2, $id2);
-      //       $test_brand2->save();
-      //       //Act
-      //       Brand::deleteAll();
-      //       $result = Brand::getAll();
-      //       //Assert
-      //       $this->assertEquals([], $result);
-      //   }
+        function testSave()
+        {
+            //Arrange
+            $brand_name = "Saloman";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+            //Act
+            $result = Brand::getAll();
+            //Assert
+            $this->assertEquals($test_brand, $result[0]);
+        }
+        function testGetAll()
+        {
+            //Arrange
+            $brand_name = "Saloman";
+            $id = 1;
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
+            $brand_name2 = "Crocs";
+            $id2 = 2;
+            $test_brand2 = new Brand($brand_name2, $id2);
+            $test_brand2->save();
+            //Act
+            $result = Brand::getAll();
+            //Assert
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+        function testDeleteAll()
+        {
+            //Arrange
+            $brand_name = "Saloman";
+            $id = 1;
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
+            $brand_name2 = "Crocs";
+            $id2 = 2;
+            $test_brand2 = new Brand($brand_name2, $id2);
+            $test_brand2->save();
+            //Act
+            Brand::deleteAll();
+            $result = Brand::getAll();
+            //Assert
+            $this->assertEquals([], $result);
+        }
       //   function testFind()
       //  {
       //    //Arrange;

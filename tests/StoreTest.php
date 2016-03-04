@@ -136,21 +136,21 @@
     //        // Assert
     //        $this->assertEquals($test_store->getBrands(), [$test_brand]);
     //    }
-    //     function testDelete() {
-    //         //Arrange;
-    //         $store_name = "Super Shoes";
-    //         $id = 1;
-    //         $test_store = new Store($store_name, $id);
-    //         $test_store->save();
-    //         $store_name2 = "Sweet Sole";
-    //         $id2 = 2;
-    //         $test_store2 = new Store($store_name2, $id2);
-    //         $test_store2->save();
-    //         //Act;
-    //         $test_store2->delete();
-    //         //Assert;
-    //         $this->assertEquals([$test_store], Store::getAll());
-    //     }
+        function testDelete() {
+            //Arrange;
+            $store_name = "Super Shoes";
+            $id = 1;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+            $store_name2 = "Sweet Sole";
+            $id2 = 2;
+            $test_store2 = new Store($store_name2, $id2);
+            $test_store2->save();
+            //Act;
+            $test_store2->delete();
+            //Assert;
+            $this->assertEquals([$test_store], Store::getAll());
+        }
     //     function testUpdate()
     //     {
     //         // Arrange

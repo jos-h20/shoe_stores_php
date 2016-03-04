@@ -3,16 +3,16 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
-    <title>Stylist/Client</title>
+    <title>Stores</title>
 </head>
 <body>
     <div class="jumbotron">
-        <h1>Stores</h1>
+        <h1>Shoe Stores</h1>
         <h2><em>Add a store or click on a store to update or add a brand.</em></h2>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 form">
                 <!-- DISPLAY AREA -->
                         {% if stores is not empty %}
                             <h3>List of current stores:</h3>
@@ -26,7 +26,7 @@
                         {% endif %}
                 <!-- END DISPLAY AREA -->
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 form">
                 <!-- START ADD STUDENT FORM -->
                         <form action="/add_store" method="post">
                             <label for="name">Store Name:</label>
@@ -39,6 +39,8 @@
                         <form action="/delete_all_stores" method="post">
                             <button type="submit">Delete ALL Stores</button>
                         </form>
+                    <h2><a href="/">Home</a></h2>
+                    <h2><a href="/brands">Brands</a></h2>
             </div>
         </div>
     </div>

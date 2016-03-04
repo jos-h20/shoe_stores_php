@@ -89,18 +89,6 @@
         $brand->addStore($store);
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
-    // $app->patch("/course/{id}/update", function($id) use ($app) {
-    //     $course = Brand::find($id);
-    //     $new_name = $_POST['new_name'];
-    //     $new_course_number = $_POST['new_course_number'];
-    //     $course->update($new_name, $new_course_number);
-    //     return $app['twig']->render('course.html.twig', array('course' => $course, 'students' => $course->getStudents(), 'all_students' => Student::getAll()));
-    // });
-    // $app->delete("/course/{id}/delete", function($id) use ($app) {
-    //     $course = Course::find($id);
-    //     $course->delete();
-    //     return $app['twig']->render("courses.html.twig", array('courses' => Course::getAll()));
-    // });
 
     return $app;
 

@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
-    <title>Stylist/Client</title>
+    <title>{{ store.getStoreName }}</title>
 </head>
 <body>
     <div class="jumbotron">
@@ -12,22 +12,20 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-
-                    {% if brands is not empty %}
-                        <p>Here are the brands for this store:</p>
-                        <ul>
-                            {% for brand in brands %}
-                                <li>{{ brand.getBrandName }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+            <div class="col-sm-6 form">
+                {% if brands is not empty %}
+                    <p>Here are the brands for this store:</p>
+                    <ul>
+                        {% for brand in brands %}
+                            <li>{{ brand.getBrandName }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 form">
                 <h4>Add a brand to this store:</h4>
-
                 <form action='/store_add_brand' method='post'>
-                    <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
+                    <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
                     <label for="brand_id">Select a brand</label>
                     <select id='brand_id' name='brand_id' type='text'>
                       {% for brand in all_brands %}
@@ -42,7 +40,7 @@
                   <input name="_method" type="hidden" value="patch">
 
                   <label for="new_store_name">Rename your store:</label>
-                  <input id="new_store_name" name="new_store_name" type="text" value="{{ store.getStoreName }}">
+                  <input id="new_store_name" name="new_store_name" type="text" value={{ s }}>
 
                   <button type="submit">Update</button>
                 </form>
@@ -52,6 +50,8 @@
                   <button type="submit">Delete this store</button>
                 </form>
                 <h2><a href="/">Home</a></h2>
+                <h2><a href="/stores">Stores</a></h2>
+                <h2><a href="/brands">Brands</a></h2>
             </div>
         </div>
     </div>

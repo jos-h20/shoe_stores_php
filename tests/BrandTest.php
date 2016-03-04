@@ -26,17 +26,17 @@
             // Assert
             $this->assertEquals($brand_name, $result);
         }
-      //   function testGetId()
-      //   {
-      //       // Arrange
-      //       $brand_name = "Saloman";
-      //       $id = 1;
-      //       $test_brand = new Brand($brand_name, $id);
-      //       // Act
-      //       $result = $test_brand->getId();
-      //       // Assert
-      //       $this->assertEquals($id, $result);
-      //   }
+        function testGetId()
+        {
+            // Arrange
+            $brand_name = "Saloman";
+            $id = 1;
+            $test_brand = new Brand($brand_name, $id);
+            // Act
+            $result = $test_brand->getId();
+            // Assert
+            $this->assertEquals($id, $result);
+        }
       //   function testSave()
       //   {
       //       //Arrange

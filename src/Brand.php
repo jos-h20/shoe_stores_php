@@ -16,10 +16,10 @@
         {
             return $this->brand_name;
         }
-    //     function getId()
-    //     {
-    //         return $this->id;
-    //     }
+        function getId()
+        {
+            return $this->id;
+        }
     //     function save()
     //     {
     //           $GLOBALS['DB']->exec("INSERT INTO brands (brand_name) VALUES ('{$this->getBrandName()}');");

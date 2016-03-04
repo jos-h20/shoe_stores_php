@@ -86,19 +86,19 @@
         }
         function testFind()
        {
-         //Arrange;
-         $brand_name = "Saloman";
-         $id = 1;
-         $test_brand = new Brand($brand_name, $id);
-         $test_brand->save();
-         $brand_name2 = "Crocs";
-         $id2 = 2;
-         $test_brand2 = new Brand($brand_name2, $id2);
-         $test_brand2->save();
-         //Act;
-         $result = Brand::find($test_brand->getId());
-         //Assert
-         $this->assertEquals($test_brand, $result);
+           //Arrange;
+           $brand_name = "Saloman";
+           $id = 1;
+           $test_brand = new Brand($brand_name, $id);
+           $test_brand->save();
+           $brand_name2 = "Crocs";
+           $id2 = 2;
+           $test_brand2 = new Brand($brand_name2, $id2);
+           $test_brand2->save();
+           //Act;
+           $result = Brand::find($test_brand->getId());
+           //Assert
+           $this->assertEquals($test_brand, $result);
        }
        function testGetStores()
        {
@@ -139,34 +139,6 @@
            // Assert
            $this->assertEquals($test_brand->getStores(), [$test_store]);
        }
-      //   function testDelete() {
-      //       //Arrange;
-      //       $brand_name = "Saloman";
-      //       $id = 1;
-      //       $test_brand = new Brand($brand_name, $id);
-      //       $test_brand->save();
-      //       $brand_name2 = "Crocs";
-      //       $id2 = 2;
-      //       $test_brand2 = new Brand($brand_name2, $id2);
-      //       $test_brand2->save();
-      //       //Act;
-      //       $test_brand2->delete();
-      //       //Assert;
-      //       $this->assertEquals([$test_brand], Brand::getAll());
-      //   }
-      //   function testUpdate()
-      //   {
-      //       // Arrange
-      //       $brand_name = "Saloman";
-      //       $id = 1;
-      //       $test_brand = new Brand($brand_name, $id);
-      //       $test_brand->save();
-      //       $new_brand_name = "Crocs";
-      //       // Act
-      //       $test_brand->update($new_brand_name);
-      //       $result = [$test_brand->getBrandName()];
-      //       // Assert
-      //       $this->assertEquals(["Crocs"], $result);
-      //   }
+
     }
 ?>

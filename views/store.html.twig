@@ -1,0 +1,66 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <title>Stylist/Client</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>{{ store.getStoreName }}</h1>
+        <h2><em>Add a brand or update store.</em></h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+
+                    {% if brands is not empty %}
+                        <p>Here are the brands for this store:</p>
+                        <ul>
+                            {% for brand in brands %}
+                                <li>{{ brand.getBrandName }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+            </div>
+            <div class="col-sm-6">
+                <h4>Add a brand to this store:</h4>
+
+                <form action='/add_brands' method='post'>
+                    <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+                    <label for="brand_id">Select a brand</label>
+                    <select id='brand_id' name='brand_id' type='text'>
+                      {% for brand in all_brands %}
+                        <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
+                      {% endfor %}
+                    </select>
+                    <button type='submit'>Add brand</button>
+                </form>
+                <h1>Update the {{ store.getStoreName }} store </h1>
+
+                <form action="/store/{{ store.getId }}/update" method="post">
+                  <input name="_method" type="hidden" value="patch">
+
+                  <label for="new_store_name">Rename your store:</label>
+                  <input id="new_store_name" name="new_store_name" type="text" value="{{ store.getStoreName }}">
+
+                  <button type="submit">Update</button>
+                </form>
+                <form action="/store/{{ store.getId }}" method="post">
+                  <input name="_method" type="hidden" value="delete">
+
+                  <button type="submit">Delete this store</button>
+                </form>
+                <h2><a href="/">Home</a></h2>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <div class="navbar-text pull-left">
+                <p>© 2016 Josh Overly.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

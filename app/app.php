@@ -48,23 +48,23 @@
         $store = Store::find($id);
         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
-    $app->post("/student_add_course", function() use ($app) {
-        $course = Course::find($_POST['course_id']);
-        $student = Student::find($_POST['student_id']);
-        $student->addCourse($course);
-        return $app['twig']->render('student.html.twig', array('student' => $student, 'courses' => $student->getCourses(), 'all_courses' => Course::getAll()));
+    //STORE PAGE
+    $app->post("/store_add_brand", function() use ($app) {
+        $brand = Brand::find($_POST['brand_id']);
+        $store = Store::find($_POST['store_id']);
+        $store->addBrand($brand);
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
-    $app->patch("/student/{id}/update", function($id) use ($app) {
-        $student = Student::find($id);
-        $new_name = $_POST['new_name'];
-        $new_enrollment = $_POST['new_enrollment'];
-        $student->update($new_name, $new_enrollment);
-        return $app['twig']->render('student.html.twig', array('student' => $student, 'courses' => $student->getCourses(), 'all_courses' => Course::getAll()));
+    $app->patch("/store/{id}/update", function($id) use ($app) {
+        $store = Store::find($id);
+        $new_store_name = $_POST['new_store_name'];
+        $store->update($new_store_name);
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
-    $app->delete("/student/{id}/delete", function($id) use ($app) {
-        $student = Student::find($id);
-        $student->delete();
-        return $app['twig']->render("students.html.twig", array('students' => Student::getAll()));
+    $app->delete("/store/{id}/delete", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app['twig']->render("stores.html.twig", array('stores' => Store::getAll()));
     });
 // BRANDS PAGE
     $app->post("/add_course", function() use ($app) {

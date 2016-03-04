@@ -151,19 +151,19 @@
             //Assert;
             $this->assertEquals([$test_store], Store::getAll());
         }
-    //     function testUpdate()
-    //     {
-    //         // Arrange
-    //         $store_name = "Super Shoes";
-    //         $id = 1;
-    //         $test_store = new Store($store_name, $id);
-    //         $test_store->save();
-    //         $new_store_name = "Super Sweet Shoes";
-    //         // Act
-    //         $test_store->update($new_store_name);
-    //         $result = [$test_store->getStoreName()];
-    //         // Assert
-    //         $this->assertEquals(["Super Sweet Shoes"], $result);
-    //     }
+        function testUpdate()
+        {
+            // Arrange
+            $store_name = "Super Shoes";
+            $id = 1;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+            $new_store_name = "Super Sweet Shoes";
+            // Act
+            $test_store->update($new_store_name);
+            $result = [$test_store->getStoreName()];
+            // Assert
+            $this->assertEquals(["Super Sweet Shoes"], $result);
+        }
     }
 ?>

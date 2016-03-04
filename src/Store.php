@@ -23,8 +23,16 @@
         }
         function save()
         {
+            $this->setStoreName($this->apostrophier($this->getStoreName()));
             $GLOBALS['DB']->exec("INSERT INTO stores (store_name) VALUES ('{$this->getStoreName()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+        function apostrophier($store_name)
+        {
+            $search = "/(\')/";
+            $replace = "\'";
+            $working_store_name = preg_replace($search, $replace, $store_name);
+            return $working_store_name;
         }
         static function getAll()
         {

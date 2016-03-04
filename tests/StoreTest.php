@@ -52,15 +52,15 @@
         }
         function testApostrophier()
         {
-          //Arrange
-          $store_name = "John's Shoes";
-          $id = 1;
-          $test_store = new Store($store_name, $id);
-          $test_store->save();
-          //Act
-          $result = Store::getAll();
-          //Assert
-          $this->assertEquals("John's Shoes", $result[0]->getStoreName());
+            //Arrange
+            $store_name = "John's Shoes";
+            $id = 1;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+            //Act
+            $result = Store::getAll();
+            //Assert
+            $this->assertEquals("John's Shoes", $result[0]->getStoreName());
         }
         function testGetAll()
         {

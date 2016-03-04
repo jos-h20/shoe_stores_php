@@ -83,24 +83,24 @@
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
     //BRAND PAGE
-    $app->post("/course_add_student", function() use ($app) {
-        $student = Student::find($_POST['student_id']);
-        $course = Course::find($_POST['course_id']);
-        $course->addStudent($student);
-        return $app['twig']->render('course.html.twig', array('course' => $course, 'students' => $course->getStudents(), 'all_students' => Student::getAll()));
+    $app->post("/brand_add_store", function() use ($app) {
+        $store = Store::find($_POST['store_id']);
+        $brand = Brand::find($_POST['brand_id']);
+        $brand->addStore($store);
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
-    $app->patch("/course/{id}/update", function($id) use ($app) {
-        $course = Course::find($id);
-        $new_name = $_POST['new_name'];
-        $new_course_number = $_POST['new_course_number'];
-        $course->update($new_name, $new_course_number);
-        return $app['twig']->render('course.html.twig', array('course' => $course, 'students' => $course->getStudents(), 'all_students' => Student::getAll()));
-    });
-    $app->delete("/course/{id}/delete", function($id) use ($app) {
-        $course = Course::find($id);
-        $course->delete();
-        return $app['twig']->render("courses.html.twig", array('courses' => Course::getAll()));
-    });
+    // $app->patch("/course/{id}/update", function($id) use ($app) {
+    //     $course = Brand::find($id);
+    //     $new_name = $_POST['new_name'];
+    //     $new_course_number = $_POST['new_course_number'];
+    //     $course->update($new_name, $new_course_number);
+    //     return $app['twig']->render('course.html.twig', array('course' => $course, 'students' => $course->getStudents(), 'all_students' => Student::getAll()));
+    // });
+    // $app->delete("/course/{id}/delete", function($id) use ($app) {
+    //     $course = Course::find($id);
+    //     $course->delete();
+    //     return $app['twig']->render("courses.html.twig", array('courses' => Course::getAll()));
+    // });
 
     return $app;
 

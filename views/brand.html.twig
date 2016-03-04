@@ -1,0 +1,67 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <title>{{ brand.getBrandName }}</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>{{ brand.getBrandName }}</h1>
+        <h2><em>Add a store or delete a store.</em></h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>{{ brand.getBrandName }}</h1>
+
+                {% if stores is not empty %}
+                    <p>Here are the stores:</p>
+                    <ul>
+                        {% for store in stores %}
+                            <li><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>You currently don't have any stores! Use the form below to get started!</p>
+                {% endif %}
+                <!-- ADD STUDENT TO COURSE DROPDOWN -->
+                        <h3>Add a store</h3>
+                        <form action="/brand_add_store" method="post">
+                            <input id="store_id" = name="store_id" type="hidden" value="{{ store.getId }}">
+
+                            <label for="store_id">Select a store:</label>
+                            <select name="store_id" type="text" required>
+                                    {% for store in all_stores %}
+                                        <option value="{{ store.getId }}">{{ store.getStoreName }}</option>
+                                    {% endfor %}
+                            </select>
+
+                            <button type="submit">Add Store</button>
+                        </form>
+                <!-- {% if clients is not empty %}
+                    <h1>Here are {{ stylist.getStylistName() }}'s clients:</h1>
+                    <ul>
+                        {% for client in clients %}
+                            <h2><a href="/client/{{ client.getId }}">{{ client.getClientName }}</a></h2>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                <p>There are no clients yet! Add a client below.</p>
+                {% endif %} -->
+            </div>
+            <div class="col-sm-6">
+                <!-- <h1><a href="/stylists_edit/{{ stylist.getId }}">Click here</a> to update <strong>{{ stylist.getStylistName() }}</strong>.</h1>
+                <h2><a href="/">Home</a></h2> -->
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <div class="navbar-text pull-left">
+                <p>© 2016 Josh Overly.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

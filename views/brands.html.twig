@@ -1,0 +1,54 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <title>Shoe Brands</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Shoe Brands</h1>
+        <h3><em>Add brands available to shoe stores.</em></h3>
+        <h3><em>Click on a brand to add stores.</em></h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 form">
+                <h1>Brands</h1>
+        <!-- DISPLAY AREA -->
+                {% if brands is not empty %}
+                    <h3>List of current brands:</h3>
+                    <ul>
+                        {% for brand in brands %}
+                            <li><a href="/brand/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h3>You currently don't have any brands listed! Use the form below to add a brand.</h3>
+                {% endif %}
+        <!-- END DISPLAY AREA -->
+            </div>
+            <div class="col-sm-6 form">
+                <!-- START ADD STUDENT FORM -->
+                        <form action="/add_brand" method="post">
+                            <label for="name">Brand Name:</label>
+                            <input type="text" name="brand_name" required>
+
+                            <button type="submit">Add Brand</button>
+                        </form>
+                <!-- END ADD STUDENT FORM -->
+                        <form action="/delete_all_brands" method="post">
+                            <button type="submit">Delete ALL Brands</button>
+                        </form>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <div class="navbar-text pull-left">
+                <p>© 2016 Josh Overly.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

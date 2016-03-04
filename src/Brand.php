@@ -63,23 +63,23 @@
             }
             return $found_brand;
         }
-    //     function addStore($store)
-    //     {
-    //         $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$store->getId()});");
-    //     }
-    //     function getStores()
-    //     {
-    //         $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands JOIN stores_brands ON (brands.id = stores_brands.brand_id) JOIN stores ON (stores_brands.store_id = stores.id) WHERE brand_id = {$this->getId()};");
-    //         $stores = array();
-    //         foreach($returned_stores as $store) {
-    //             $store_name = $store['store_name'];
-    //             $id = $store['id'];
-    //             $new_store = new Store($name, $id);
-    //             array_push($stores, $new_store);
-    //         }
-    //         return $stores;
-    //     }
-    //     }
+        function addStore($store)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (brand_id, store_id) VALUES ({$this->getId()}, {$store->getId()});");
+        }
+        function getStores()
+        {
+            $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands JOIN stores_brands ON (brands.id = stores_brands.brand_id) JOIN stores ON (stores_brands.store_id = stores.id) WHERE brand_id = {$this->getId()};");
+            $stores = array();
+            foreach($returned_stores as $store) {
+                $store_name = $store['store_name'];
+                $id = $store['id'];
+                $new_store = new Store($store_name, $id);
+                array_push($stores, $new_store);
+            }
+            return $stores;
+        }
+        // }
     //     static function printStoreList($store_ids)
     //     {
     //         $store_list = [];

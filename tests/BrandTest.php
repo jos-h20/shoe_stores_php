@@ -5,6 +5,8 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/Brand.php";
+    require_once "src/Store.php";
+
     $server = 'mysql:host=localhost;dbname=shoes_test';
     $username = 'root';
     $password = 'root';
@@ -14,6 +16,7 @@
         protected function tearDown()
         {
             Brand::deleteAll();
+            Store::deleteAll();
         }
         function testGetBrandName()
         {
@@ -97,46 +100,45 @@
          //Assert
          $this->assertEquals($test_brand, $result);
        }
-      //  function testGetStores()
-      //  {
-      //      // Arrange
-      //      $brand_name = "Jim";
-      //      $enrollment = "2016-03-01";
-      //      $id = 1;
-      //      $test_store = new Store($brand_name, $enrollment, $id);
-      //      $test_store->save();
-      //      $brand_name2 = "Joe";
-      //      $enrollment2 = "2016-03-02";
-      //      $id2 = 2;
-      //      $test_store2 = new Store($brand_name2, $enrollment2, $id2);
-      //      $test_store2->save();
-      //      $brand_name = "Saloman";
-      //      $id3 = 3;
-      //      $test_brand = new Brand($brand_name, $id3);
-      //      $test_brand->save();
-      //      // Act
-      //      $test_brand->addStore($test_store);
-      //      $test_brand->addStore($test_store2);
-      //      // Assert
-      //      $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
-      //  }
-      //  function testAddStore()
-      //  {
-      //      // Arrange
-      //      $brand_name = "Jim";
-      //      $enrollment = "2016-03-01";
-      //      $id = 1;
-      //      $test_store = new Store($brand_name, $enrollment, $id);
-      //      $test_store->save();
-      //      $brand_name = "Saloman";
-      //      $id2 = 2;
-      //      $test_brand = new Brand($brand_name, $id2);
-      //      $test_brand->save();
-      //      // Act
-      //      $test_brand->addStore($test_store);
-      //      // Assert
-      //      $this->assertEquals($test_brand->getStores(), [$test_store]);
-      //  }
+       function testGetStores()
+       {
+           // Arrange
+           $store_name = "Super Shoes";
+           $id = 1;
+           $test_store = new Store($store_name, $id);
+           $test_store->save();
+           $store_name2 = "Muy Awesome Shoes";
+           $id2 = 2;
+           $test_store2 = new Store($store_name2, $id2);
+           $test_store2->save();
+
+           $brand_name = "Saloman";
+           $id3 = 3;
+           $test_brand = new Brand($brand_name, $id3);
+           $test_brand->save();
+           // Act
+           $test_brand->addStore($test_store);
+           $test_brand->addStore($test_store2);
+           // Assert
+           $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
+       }
+       function testAddStore()
+       {
+           // Arrange
+           $brand_name = "Super Shoes";
+           $id = 1;
+           $test_store = new Store($brand_name, $id);
+           $test_store->save();
+
+           $brand_name = "Saloman";
+           $id2 = 2;
+           $test_brand = new Brand($brand_name, $id2);
+           $test_brand->save();
+           // Act
+           $test_brand->addStore($test_store);
+           // Assert
+           $this->assertEquals($test_brand->getStores(), [$test_store]);
+       }
       //   function testDelete() {
       //       //Arrange;
       //       $brand_name = "Saloman";

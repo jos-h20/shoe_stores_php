@@ -33,21 +33,20 @@
         return $app['twig']->render('index.html.twig');
     });
 // STORES PAGE
-    $app->post("/add_student", function() use ($app) {
-        $name = $_POST['name'];
-        $enrollment = $_POST['enrollment'];
+    $app->post("/add_store", function() use ($app) {
+        $store_name = $_POST['store_name'];
         $id = null;
-        $new_student = new Student($name, $enrollment, $id);
-        $new_student->save();
-        return $app['twig']->render('students.html.twig', array('students' => Student::getAll()));
+        $new_store = new Store($store_name, $id);
+        $new_store->save();
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
     });
-    $app->post("/delete_all_students", function() use ($app) {
-        Student::deleteAll();
-        return $app['twig']->render('students.html.twig', array('students' => Student::getAll()));
+    $app->post("/delete_all_stores", function() use ($app) {
+        Store::deleteAll();
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
     });
-    $app->get("/student/{id}", function($id) use($app) {
-        $student = Student::find($id);
-        return $app['twig']->render('student.html.twig', array('student' => $student, 'courses' => $student->getCourses(), 'all_courses' => Course::getAll()));
+    $app->get("/store/{id}", function($id) use($app) {
+        $store = Store::find($id);
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
     $app->post("/student_add_course", function() use ($app) {
         $course = Course::find($_POST['course_id']);
